@@ -11,8 +11,12 @@ public class SeleniumBuilder {
 
     public static WebDriver getBrowser() {
         if (drivers.get(0) == null) {
-            drivers.add(0, new ChromeDriver());
+            drivers.add(0, getDriver());
         }
         return drivers.get(0);
+    }
+    
+    private static WebDriver getDriver() {
+        return new ChromeDriver();
     }
 }
