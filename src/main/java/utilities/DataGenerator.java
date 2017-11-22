@@ -15,13 +15,13 @@ public class DataGenerator {
 
     public static String generateLetters(int length) {
         String letters = getLetters(length);
-        TaeLog.Debug("generated letters: " + letters, DataGenerator.class);
+        TaeLog.debug("generated letters: " + letters, DataGenerator.class);
         return letters;
     }
 
     public static String generateString() {
         String s1 = getString();
-        TaeLog.Debug("generated string: " + s1, DataGenerator.class);
+        TaeLog.debug("generated string: " + s1, DataGenerator.class);
         return s1;
     }
 
@@ -32,19 +32,19 @@ public class DataGenerator {
             generated.append(getString());
         }
         String s1 = generated.subSequence(0, length).toString();
-        TaeLog.Debug("generated string: " + s1, DataGenerator.class);
+        TaeLog.debug("generated string: " + s1, DataGenerator.class);
         return s1;
     }
 
     public static int generateNumber() {
         int number = getNumber(0, 1000);
-        TaeLog.Debug("generated number: " + number, DataGenerator.class);
+        TaeLog.debug("generated number: " + number, DataGenerator.class);
         return number;
     }
 
     public static int generateNumber(int min, int max) {
         int number = getNumber(min, max);
-        TaeLog.Debug("generated number: " + number, DataGenerator.class);
+        TaeLog.debug("generated number: " + number, DataGenerator.class);
         return number;
     }
 
@@ -53,19 +53,19 @@ public class DataGenerator {
         String max = StringUtils.rightPad("9", length, "9");
 
         int number = getNumber(Integer.parseInt(min), Integer.parseInt(max));
-        TaeLog.Debug("generated number: " + number, DataGenerator.class);
+        TaeLog.debug("generated number: " + number, DataGenerator.class);
         return number;
     }
 
     public static long generateLongNumber(long min, long max) {
         long num = generateLongNumber(min, max);
-        TaeLog.Debug("generated long number: " + num, DataGenerator.class);
+        TaeLog.debug("generated long number: " + num, DataGenerator.class);
         return num;
     }
 
     public static String generateEmail() {
         String email = "TAE-" + getString().substring(0,8) + "@automation.qa";
-        TaeLog.Debug("generated email: " + email, DataGenerator.class);
+        TaeLog.debug("generated email: " + email, DataGenerator.class);
         return email;
     }
 
@@ -74,13 +74,13 @@ public class DataGenerator {
         int prefix = getNumber(100, 999);
         int number = getNumber(1000, 9999);
         String phone = "(" + areaCode + ") " + prefix + "-" + number;
-        TaeLog.Debug("generated phone number: " + phone, DataGenerator.class);
+        TaeLog.debug("generated phone number: " + phone, DataGenerator.class);
         return phone;
     }
 
     public static DateTime generateDateTime(DateTime after) {
         DateTime generated = after.plus(getLongNUmber(0,TimeUnit.DAYS.toMillis(60)));
-        TaeLog.Debug("generated date: " + generated.toString("MM/dd/yyyy hh:mm:ss"), DataGenerator.class);
+        TaeLog.debug("generated date: " + generated.toString("MM/dd/yyyy hh:mm:ss"), DataGenerator.class);
         return generated;
     }
 
@@ -113,7 +113,7 @@ public class DataGenerator {
                 address =  house + " E " + street + " S";
                 break;
         }
-        TaeLog.Debug("generated address: " + address, DataGenerator.class);
+        TaeLog.debug("generated address: " + address, DataGenerator.class);
         return address;
     }
 

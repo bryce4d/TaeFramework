@@ -1,29 +1,41 @@
 package utilities;
 
+import org.apache.log4j.Logger;
+
 public class TaeLog {
 
-    public static void Info(String msg, Class clazz) {
-        System.out.println("[" + clazz+ "] " + msg);
+    public static void info(String msg, Class clazz) {
+        Logger logger = getLogger(clazz);
+        logger.info(msg);
     }
 
-    public static void Debug(String msg, Class clazz) {
-        System.out.println("[" + clazz+ "] " + msg);
-    }
-
-    public static void Warn(String msg, Class clazz) {
-        System.out.println("[" + clazz+ "] " + msg);
-    }
-
-    public static void Error(String msg, Class clazz) {
-        System.out.println("[" + clazz+ "] " + msg);
-    }
-
-    public static void Error(Exception e, Class clazz) {
-        System.out.println("Exception from " + clazz);
-        System.out.println(e.getMessage());
-        System.out.println(e.getCause().getMessage());
-        for (StackTraceElement st : e.getStackTrace()) {
-            System.out.println(st.toString());
+    public static void debug(String msg, Class clazz) {
+        Logger logger = getLogger(clazz);
+        if(logger.isDebugEnabled()){
+            logger.debug(msg);
         }
+    }
+
+    public static void warn(String msg, Class clazz) {
+        Logger logger = getLogger(clazz);
+        logger.warn(msg);
+    }
+
+    public static void error(String msg, Class clazz) {
+        Logger logger = getLogger(clazz);
+        logger.error(msg);
+    }
+
+    public static void error(Exception e, Class clazz) {
+        Logger logger = getLogger(clazz);
+        logger.error(e.getMessage());
+        logger.error(e.getCause());
+        for (StackTraceElement st : e.getStackTrace()) {
+            logger.error(st.toString());
+        }
+    }
+
+    public static Logger getLogger(Class clazz) {
+        return Logger.getLogger(clazz);
     }
 }

@@ -17,18 +17,18 @@ public class TaeProperties {
     public static String getProperty(String key) {
         String value = System.getenv(key) == null ? propertyReader.getProperty(key) : System.getenv(key);
         if (value == null) {
-            TaeLog.Warn("property not found " + key, TaeProperties.class);
+            TaeLog.warn("property not found " + key, TaeProperties.class);
             return null;
         } else {
             value = buildPartialData(value);
-            TaeLog.Debug("getting property key: " + key + " value: " + value, TaeProperties.class);
+            TaeLog.debug("getting property key: " + key + " value: " + value, TaeProperties.class);
         }
         return value;
     }
 
     public static void setProperty(String key, String value) {
         propertyReader.setProperty(key, value);
-        TaeLog.Debug("set property key: " + key + " value: " + value, TaeProperties.class);
+        TaeLog.debug("set property key: " + key + " value: " + value, TaeProperties.class);
     }
 
     public static boolean hasProperty(String key) {
@@ -47,7 +47,7 @@ public class TaeProperties {
                 propertyReader.load(inputStreamReader);
             }
         } catch (IOException e) {
-            TaeLog.Error(e, TaeProperties.class);
+            TaeLog.error(e, TaeProperties.class);
             e.printStackTrace();
         }
         return propertyReader;
